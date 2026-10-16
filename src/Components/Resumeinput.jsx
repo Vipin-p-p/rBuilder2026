@@ -5,6 +5,11 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { TextField } from '@mui/material';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 const steps = ['Basic Infromations', 'Contact Details', 'Educational Details', 'Review & Submit'];
@@ -20,38 +25,68 @@ function Resumeinput() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-   const renderFormCount=(stepCount)=>{
+  const renderFormCount = (stepCount) => {
     switch (stepCount) {
-      case 0:return(
+      case 0: return (
         <div>
           <h1>Personal Details</h1>
+          <div className='row p-3'>
+            <TextField id='standard-basic-Fullname' label="Full Name" variant='standard' />
+            <TextField id='standard-basic-Location' label="Location" variant='standard' />
+            <FormControl variant='standard'>
+              <InputLabel id="demo-simple-select-label">Choose Job Title</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+
+                label="Job"
+
+              >
+                <MenuItem value={"Job"}>Job</MenuItem>
+
+              </Select>
+            </FormControl>
+          </div>
+
+
         </div>
       )
         break;
-        case 1:return(
+      case 1: return (
         <div>
           <h1>Contact Details</h1>
+          <div className='row p-3'>
+            <TextField id='standard-basic-Email' label="Email" variant='standard' />
+            <TextField id='standard-basic-Contact' label="Contact Number" variant='standard' />
+            <TextField id='standard-basic-LinkedIn' label="LinkedIn Link" variant='standard' />
+            <TextField id='standard-basic-Github' label="Github Link" variant='standard' />
+          </div>
         </div>
       )
         break;
-        case 2:return(
+      case 2: return (
         <div>
           <h1>Educational Details</h1>
+          <div className='row p-3'>
+            <TextField id='standard-basic-degree' label="Bachlor's Degree" variant='standard' />
+            <TextField id='standard-basic-college' label="University/College Name" variant='standard' />
+            <TextField id='standard-basic-graduation' label="Year Of Graduation" variant='standard' />
+          </div>
         </div>
       )
         break;
-        case 3:return(
+      case 3: return (
         <div>
           <p>Our Ai Will Generate Skills & Summary According To Your Job Role.Click The <b>Generate Ai Skills & Summary</b>Button To Proceed</p>
-         
+
         </div>
       )
         break;
-    
-      default:null
+
+      default: null
         break;
     }
-   }
+  }
 
 
 
