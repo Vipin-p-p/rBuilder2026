@@ -9,6 +9,7 @@ const axiosService = async (httpMethod, url, reqBody) => {
             url,
             data: reqBody
         })
+        return response
 
     } catch (error) {
 

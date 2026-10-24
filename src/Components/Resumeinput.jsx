@@ -13,15 +13,21 @@ import Select from '@mui/material/Select';
 import jobRole from '../assets/jobRoles.json'
 import jobSkills from '../assets/jobSkills.json'
 import summaries from '../assets/summaries.json'
+import { resume } from 'react-dom/server';
+import { toast } from 'react-toastify';
+import { saveResumeApi } from '../service/apiService';
+import { useNavigate } from 'react-router-dom';
 
 
 const steps = ['Basic Infromations', 'Contact Details', 'Educational Details', 'Review & Submit'];
 
 
 
-function Resumeinput({resumedetails, SetResumeDetails}) {
+function Resumeinput({ resumedetails, SetResumeDetails }) {
 
- 
+  const navigate = useNavigate()
+
+
   console.log(resumedetails);
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -105,9 +111,30 @@ function Resumeinput({resumedetails, SetResumeDetails}) {
     }
   }
 
-  const generateSkillSummary =()=>{
-    SetResumeDetails({...resumedetails,skills:jobSkills[resumedetails.job],summary:summaries[resumedetails.job]})
+  const generateSkillSummary = () => {
+    SetResumeDetails({ ...resumedetails, skills: jobSkills[resumedetails.job], summary: summaries[resumedetails.job] })
     handleNext()
+  }
+
+  const handleSaveResume = async () => {
+    //make api call to save resume whenever the finish button clicks
+    const { fullname, location, job, phone, email, github, linkedin, degree, college, year, skills, summary } = resumedetails
+
+    if (fullname && location && job && phone && email && github && linkedin && degree && college && year && skills.length > 0 && summary) {
+      //make api call
+      const response = await saveResumeApi(resumedetails)
+      console.log(response);
+      if (response.status == 201) {
+        toast.success("Resume Added Successfully")
+        const resumeId = response.data.id
+        navigate(`/resume/${resumeId}`)
+      }
+
+    } else {
+      toast.error("Please Fill The Form Completely!!!")
+
+    }
+
   }
 
 
@@ -133,7 +160,7 @@ function Resumeinput({resumedetails, SetResumeDetails}) {
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
-            <Button >Finish</Button>
+            <Button onClick={handleSaveResume}>Finish</Button>
           </Box>
         </React.Fragment>
       ) : (

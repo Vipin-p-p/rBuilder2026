@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaFileDownload, FaBackward } from "react-icons/fa";
 import Edit from '../Components/Edit'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IoDocumentText } from "react-icons/io5";
 import { IoMdRefresh } from "react-icons/io";
 import Preview from '../Components/Preview';
+import { viewResumeApi } from '../service/apiService';
 
 
 function View() {
+
+  const [resume, SetResume] = useState()
+
+
+  const { id } = useParams()
+  console.log(resume);
+
+  useEffect(() => {
+    getResumeDetails()
+  }, [])
+
+
+
+
+  const getResumeDetails = async () => {
+    const response = await viewResumeApi(id)
+    if (response.status === 200) {
+      SetResume(response.data)
+
+    }
+  }
+
   return (
     <div className='container my-5'>
       <div className="row">
@@ -19,7 +42,7 @@ function View() {
             {/*Download*/}
             <button style={{ color: 'red' }} className='btn'><FaFileDownload />Download CV</button>
 
-            {/*Edit*/} 
+            {/*Edit*/}
             <Edit />
 
             {/*All resumes*/}
@@ -34,7 +57,7 @@ function View() {
           </div>
 
           <div className='p-5'>
-            <Preview />
+            <Preview resumedetails={resume} />
           </div>
 
         </div>

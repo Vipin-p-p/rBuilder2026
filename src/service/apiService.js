@@ -5,3 +5,9 @@ import axiosService from "../api/axiosService";
 export const saveResumeApi = async (resumedetails) => {
     return await axiosService("POST", "/resumes", resumedetails)
 }
+
+//view resume Api:called by view component when the page loads in browser
+
+export const viewResumeApi = async (resumeId) => {
+    return await axiosService("GET", `/resumes/${resumeId}`, {})
+}
