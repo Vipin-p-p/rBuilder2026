@@ -46,10 +46,10 @@ function View() {
             <Edit />
 
             {/*All resumes*/}
-            <Link style={{ color: 'red' }} to={'/all resumes'} className='btn mx-2'><IoDocumentText />All Resumes</Link>
+            {/* <Link style={{ color: 'red' }} to={'/all resumes'} className='btn mx-2'><IoDocumentText />All Resumes</Link> */}
 
             {/*Download History*/}
-            <Link style={{ color: 'red' }} to={'/downloads'} className='btn mx-2'><IoMdRefresh />Download History</Link>
+            {/* <Link style={{ color: 'red' }} to={'/downloads'} className='btn mx-2'><IoMdRefresh />Download History</Link> */}
 
             {/*Back*/}
             <Link style={{ color: 'red' }} to={'/resume details'} className='btn mx-2'><FaBackward />Previous</Link>
