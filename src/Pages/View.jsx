@@ -43,7 +43,8 @@ function View() {
             <button style={{ color: 'red' }} className='btn'><FaFileDownload />Download CV</button>
 
             {/*Edit*/}
-            <Edit />
+      
+            <Edit resumedetails={resume} SetResumeDetails={SetResume}/>
 
             {/*All resumes*/}
             {/* <Link style={{ color: 'red' }} to={'/all resumes'} className='btn mx-2'><IoDocumentText />All Resumes</Link> */}

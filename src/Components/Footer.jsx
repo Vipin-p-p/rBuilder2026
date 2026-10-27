@@ -8,7 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
   return (
-    <div style={{ backgroundColor: 'black', height: "330px" }} className='container-fluid text-light p-5'>
+    <div style={{ backgroundColor: '#6b5548', height: "330px" }} className='container-fluid text-light p-5'>
       <div className="row">
         <div className="col-lg-4">
           <h2 className='mb-3'>Ai rBuilder</h2>
