@@ -6,22 +6,29 @@ export const saveResumeApi = async (resumedetails) => {
     return await axiosService("POST", "/resumes", resumedetails)
 }
 
-//view resume Api:called by view component when the page loads in browser
+//view resume API:called by view component when the page loads in browser
 
 export const viewResumeApi = async (resumeId) => {
     return await axiosService("GET", `/resumes/${resumeId}`, {})
 }
 
 
-//view resume Api:called by saved component when the page loads in browser
+//view resume API:called by saved component when the page loads in browser
 
 export const getAllResumeApi = async () => {
     return await axiosService("GET", `/resumes/`, {})
 }
 
-//remove resumes Api:called by saved component when the delete button clicks
+//remove resumes API:called by saved component when the delete button clicks
 
 export const deleteAllResumeApi = async (resumeId) => {
     return await axiosService("DELETE", `/resumes/${resumeId}`, {})
 }
+
+//update resumes API:called by edit component when the update button clicks
+
+export const editAllResumeApi = async (resumeId,resumedetails) => {
+    return await axiosService("PUT", `/resumes/${resumeId}`,resumedetails)
+}
+
 
